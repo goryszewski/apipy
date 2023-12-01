@@ -17,3 +17,6 @@ ENV FLASK_APP=server.py
 ENV FLASK_RUN_HOST=0.0.0.0
 
 CMD [ "python3" ,"-m" ,"flask" , "run" ]
+
+# podman develop
+# docker run --rm -p 5000:5000 -it -v .:/app  --security-opt label=disable b375b42f7d91

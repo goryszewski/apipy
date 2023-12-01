@@ -1,23 +1,23 @@
 from flask import Flask
-import redis
+
+from api.models.redis import Mem
+
+from api.routes import load_route
 
 app = Flask(__name__)
 
-r = redis.Redis(host='redis-svc', port=6379, decode_responses=True)
+app.register_blueprint(load_route())
 
 @app.route('/')
-def hello_world():
-    return 'Hello '
+def main():
+    return "API"
 
-@app.route('/set/<key>/<data>')
-def set(key,data):
-    r.set(key,data )
-    return 'Set Redis data {}:{}'.format(key,data)
+@app.route('/docs')
+def docs():
+    return "swaggerui"
 
-@app.route('/get/<key>')
-def get(key):
-    data = r.get(key)
-    return 'Get Redis data {}:{}'.format(key,data)
+def create_app():
+    return app.run(debug=True)
 
 if __name__ == '__main__':
-    app.run()
+    init = create_app()

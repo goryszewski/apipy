@@ -16,6 +16,10 @@ def main():
 def docs():
     return "swaggerui"
 
+@app.route('/test')
+def test():
+    return "test"
+
 def create_app():
     return app.run(debug=True)
 

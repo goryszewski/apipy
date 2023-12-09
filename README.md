@@ -1,1 +1,6 @@
-# learn_pd
+# Docker
+
+# Docker Compose
+
+- docker compose up -d
+- docker compose down

@@ -1,0 +1,42 @@
+services:
+  api:
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000"]
+      interval: 5s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+      start_interval: 5s
+    env_file:
+      - .env
+    build: .
+    ports:
+      - 5000:5000
+    depends_on:
+      - redis
+      - mysql
+
+  redis:
+    image: "redis:alpine"
+
+  mysql:
+    image: "mysql:latest"
+    volumes:
+      - data:/var/lib/mysql
+    environment:
+       MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
+       MYSQL_DATABASE: store
+       MYSQL_USER: api
+       MYSQL_PASSWORD_FILE: /run/secrets/db_password
+    secrets:
+      - db_root_password
+      - db_password
+
+secrets:
+   db_password:
+     file: .secrets/db_password.txt
+   db_root_password:
+     file: .secrets/db_root_password.txt
+
+volumes:
+  data: {}

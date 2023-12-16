@@ -21,7 +21,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: 127.0.0.1:5000/apipython:latest
+          tags: repo.internal:5000/apipython:latest
       - name: Inspect
         run: |
-          docker buildx imagetools inspect 127.0.0.1:5000/apipython:latest
+          docker buildx imagetools inspect repo.internal:5000/apipython:latest

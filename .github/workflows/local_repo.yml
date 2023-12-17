@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - 'local'
+
 jobs:
   build:
     runs-on: self-hosted

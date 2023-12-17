@@ -19,10 +19,7 @@ jobs:
       - name: Build and push to local registry
         uses: docker/build-push-action@v5
         with:
-          config-inline: |
-            [registry."repo.internal:5000"]
-              http = true
-              insecure = true
+          allow: security.insecure
           context: .
           push: true
           tags: repo.internal:5000/apipython:latest

@@ -18,11 +18,15 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Build and push to local registry
-        uses: docker/build-push-action@v3
+        uses: docker/setup-buildx-action@v3
         with:
+          config-inline: |
+            [registry."repo.internal:5000"]
+              http = true
+              insecure = true
           context: .
           push: true
-          tags: http://repo.internal:5000/apipython:latest
+          tags: repo.internal:5000/apipython:latest
       - name: Inspect
         run: |
           docker buildx imagetools inspect repo.internal:5000/apipython:latest

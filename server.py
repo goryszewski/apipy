@@ -1,5 +1,7 @@
 from flask import Flask
 
+from flask import Flask, request, jsonify, render_template
+
 from api.models.redis import Mem
 
 from api.routes import load_route
@@ -14,7 +16,8 @@ def main():
 
 @app.route('/docs')
 def docs():
-    return "swaggerui"
+    print('sending docs')
+    return render_template('swaggerui.html')
 
 @app.route('/test')
 def test():

@@ -1,0 +1,27 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: PY API
+  description: An API
+
+paths:
+  /params:
+    get:
+      summary: Get key
+      description: Returns hello in specified language
+      responses:
+        '200':
+          description: OK
+  /params/{key}:
+    get:
+      summary: Get key
+      responses:
+        '200':
+          description: OK
+      parameters:
+        - in: path
+          name: key
+          schema:
+            type: string
+          required: true
+          description: key in redis

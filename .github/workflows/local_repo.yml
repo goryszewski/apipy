@@ -1,9 +1,6 @@
 name: CI API Python - local
 
-on:
-  push:
-    branches:
-      - 'local'
+on: [push]
 
 jobs:
   build:

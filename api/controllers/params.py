@@ -1,5 +1,8 @@
 from api.models.redis import mem
 
+def lista():
+    return "test"
+
 def get(key):
     return mem.get(key)
 

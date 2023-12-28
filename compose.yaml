@@ -9,12 +9,20 @@ services:
       start_interval: 5s
     env_file:
       - .env
-    build: .
+    secrets:
+      - db_root_password
+    environment:
+       MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
+    image: 192.168.100.10:5000/apipython:latest
+    volumes:
+      - .:/app
     ports:
       - 5000:5000
     depends_on:
-      - redis
-      - mysql
+      redis:
+        condition: service_started
+      mysql:
+        condition: service_started
 
   redis:
     image: "redis:alpine"

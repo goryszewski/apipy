@@ -5,13 +5,22 @@ info:
   description: An API
 
 paths:
-  /params:
+  /health:
     get:
-      summary: Get key
-      description: Returns hello in specified language
+      summary: Get health
+      description: Returns health
       responses:
         '200':
           description: OK
+
+  /params:
+    get:
+      summary: Get key
+      description: Returns all params
+      responses:
+        '200':
+          description: OK
+
   /params/{key}:
     get:
       summary: Get key

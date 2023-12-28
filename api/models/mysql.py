@@ -1,23 +1,22 @@
-import mysql.connector
-from mysql.connector import errorcode
+import pymysql.cursors
 
-# config = {
-#   'user': 'user',
-#   'password': 'password',
-#   'host': '127.0.0.1',
-#   'database': 'database',
-#   'raise_on_warnings': True
-# }
+
 
 class DB:
     def __init__(self,config):
-        self.cnx = mysql.connector.connect(**config)
+        self.cnx = pymysql.connect(**config)
+        self.cur = self.cnx.cursor()
 
     def test_connect(self):
-        return self.cnx.is_connected()
-    
+        return self.cnx.open
+
+    def list_db(self):
+        sql="show databases;"
+        return self._exec_sql(sql)
+
     def _exec_sql(self,sql):
-        return self.cnx.execute(sql)
+        self.cur.execute(sql)
+        return  self.cur.execute(sql)
 
     def __del__(self):
         self.cnx.close()

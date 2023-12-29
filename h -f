@@ -1,0 +1,176 @@
+[33mcommit 87270abb6f698800cc3033c664e416751e975958[m[33m ([m[1;36mHEAD -> [m[1;32mlocal[m[33m)[m
+Author: Michal Goryszewski <goryszewski@gmail.com>
+Date:   Thu Dec 28 21:41:56 2023 +0100
+
+    fix mysql connect
+
+[33mcommit a513b9216d84aed85ce216ba509e82fd2053804c[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m
+Merge: 108ead2 b66c692
+Author: Michal Goryszewski <45927807+goryszewski@users.noreply.github.com>
+Date:   Wed Dec 27 22:47:54 2023 +0100
+
+    Merge pull request #3 from goryszewski/local
+
+    PR 01 add swager
+
+[33mcommit b66c6924f3ef658494ed2e7449b04cf13b7e16f0[m
+Author: Michal Goryszewski <goryszewski@gmail.com>
+Date:   Wed Dec 27 22:35:00 2023 +0100
+
+    Add static swagger
+
+[33mcommit 37808f163f7f9bbb240614221543c1f90db0546c[m
+Author: Michal Goryszewski <goryszewski@gmail.com>
+Date:   Sun Dec 17 21:53:46 2023 +0100
+
+    test 2
+
+[33mcommit 3ec3514fd058b038e6801a11918549419d58a80a[m
+Author: Michal Goryszewski <goryszewski@gmail.com>
+Date:   Sun Dec 17 21:35:42 2023 +0100
+
+    test fix uses
+
+[33mcommit d017ee93a7f219847ad43bfb56b5d116553682af[m
+Author: Michal Goryszewski <goryszewski@gmail.com>
+Date:   Sun Dec 17 21:34:41 2023 +0100
+
+    test skip valid
+
+[33mcommit 6068acacf4ede7cf4909ef06b0e14e949d56f368[m
+Author: Michal Goryszewski <goryszewski@gmail.com>
+Date:   Sun Dec 17 21:32:04 2023 +0100
+
+    test inline config
+
+[33mcommit 09883f7f1c674338ff76bafa668b4cce8991fba3[m
+Author: Michal Goryszewski <goryszewski@gmail.com>
+Date:   Sun Dec 17 21:28:17 2023 +0100
+
+    test add http
+
+[33mcommit 557c0be8b87394eb99cfed3bafe01b7a0ddb1027[m
+Author: Michal Goryszewski <goryszewski@gmail.com>
+Date:   Sun Dec 17 21:26:26 2023 +0100
+
+    test version 3
+
+[33mcommit c4c4a380230ba330c16b1d31c814e880612064f1[m
+Author: Michal Goryszewski <goryszewski@gmail.com>
+Date:   Sun Dec 17 21:15:53 2023 +0100
+
+    test1
+
+[33mcommit 108ead2ce592325914645ddf854b58afbe7608d6[m
+Author: Michal Goryszewski <goryszewski@gmail.com>
+Date:   Sun Dec 17 21:14:11 2023 +0100
+
+    allow security.insecure
+
+[33mcommit 07fa58007a1a5db246de5088417f0aba04d33e7f[m
+Merge: 2758c59 5a709de
+Author: Michal Goryszewski <45927807+goryszewski@users.noreply.github.com>
+Date:   Sun Dec 17 21:10:46 2023 +0100
+
+    Merge pull request #2 from goryszewski/local
+
+    Local
+
+[33mcommit 5a709de1e1f8b5e3e1bf4f309404e808b3376b4e[m
+Author: Michal Goryszewski <goryszewski@gmail.com>
+Date:   Sun Dec 17 21:05:12 2023 +0100
+
+    Allow http local registry
+
+[33mcommit 71e5cf76fedd041250e415adeab747db97d5e26c[m
+Author: Michal Goryszewski <goryszewski@gmail.com>
+Date:   Sat Dec 16 23:22:33 2023 +0100
+
+    fix dns name repo
+
+[33mcommit 9b24e0ac187a0aa95d9bb9f4a955ea7a3a967182[m
+Author: Michal Goryszewski <goryszewski@gmail.com>
+Date:   Sat Dec 16 23:20:01 2023 +0100
+
+    fix addres
+
+[33mcommit 06817c6ea8570d1bb8924b9f499e1ebbeccdc387[m
+Author: Michal Goryszewski <goryszewski@gmail.com>
+Date:   Sat Dec 16 22:56:30 2023 +0100
+
+    test local repo and github action
+
+[33mcommit 2758c59a175907fa6a2c09c181d28808b5839e24[m
+Author: Michal Goryszewski <goryszewski@gmail.com>
+Date:   Tue Dec 12 23:26:33 2023 +0100
+
+    Add pre-commit and debug mysql
+
+[33mcommit 70c64778dcc4f4d3bca55c7c61d03c25c8a46e72[m
+Merge: 505844f 7f3833a
+Author: Michal Goryszewski <45927807+goryszewski@users.noreply.github.com>
+Date:   Sat Dec 9 22:34:38 2023 +0100
+
+    Merge pull request #1 from goryszewski/local
+
+    test 1
+
+[33mcommit 7f3833af45010a4e6f45cba0ed0300c4e728267b[m
+Author: Michal Goryszewski <goryszewski@gmail.com>
+Date:   Sat Dec 9 22:33:00 2023 +0100
+
+    Add docker compose
+
+[33mcommit 5038a3e1788b76bfd4826828d5dd1a4118e143aa[m
+Author: Michal Goryszewski <goryszewski@gmail.com>
+Date:   Sat Dec 9 20:36:41 2023 +0100
+
+    Class Params
+
+[33mcommit bf3805c6117bf292cf83eb47a670b23ee79ff380[m
+Author: Michal Goryszewski <goryszewski@gmail.com>
+Date:   Tue Dec 5 21:12:46 2023 +0100
+
+    init model mysql
+
+[33mcommit 3ef786ccba9d2221888b7b31970b408b287fad05[m
+Author: Michal Goryszewski <goryszewski@gmail.com>
+Date:   Sun Dec 3 20:46:32 2023 +0100
+
+    add endpoint test
+
+[33mcommit 505844f42ad57876997d8e8de668a9adb3fea079[m
+Author: Michal Goryszewski <goryszewski@gmail.com>
+Date:   Sun Dec 3 20:44:46 2023 +0100
+
+    add local repo
+
+[33mcommit e6c2f861d07f49d98c14569ac38706477896f5fd[m[33m ([m[1;33mtag: 0.0.4[m[33m)[m
+Author: Michal Goryszewski <goryszewski@gmail.com>
+Date:   Fri Dec 1 21:02:08 2023 +0100
+
+    fix
+
+[33mcommit 4d192467b59d7d628990f02981dec0a737856cb9[m[33m ([m[1;33mtag: 0.0.3[m[33m)[m
+Author: Michal Goryszewski <goryszewski@gmail.com>
+Date:   Fri Dec 1 20:59:50 2023 +0100
+
+    add routes
+
+[33mcommit c4f5b1077b62bf8dec0662cbc369ff87a401a398[m[33m ([m[1;33mtag: 0.0.2[m[33m)[m
+Author: Michal Goryszewski <goryszewski@gmail.com>
+Date:   Fri Dec 1 20:07:00 2023 +0100
+
+    fix
+
+[33mcommit 6eee73fc81e90ba9732366d1299320c53e89db29[m[33m ([m[1;33mtag: 0.0.1[m[33m)[m
+Author: Michal Goryszewski <goryszewski@gmail.com>
+Date:   Fri Dec 1 19:36:07 2023 +0100
+
+    Add git action
+
+[33mcommit 3f27b68ac2e0f520fb1012e0e1770b621c7c6aa6[m
+Author: Michal Goryszewski <goryszewski@gmail.com>
+Date:   Fri Dec 1 19:33:53 2023 +0100
+
+    init

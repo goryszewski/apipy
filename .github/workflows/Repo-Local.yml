@@ -1,4 +1,4 @@
-name: CI API Python - local
+name: CI Local Repo Registry
 
 on: [push]
 

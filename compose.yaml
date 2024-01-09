@@ -1,5 +1,6 @@
 services:
   api:
+    restart: always
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:5000"]
       interval: 5s
@@ -12,8 +13,11 @@ services:
     secrets:
       - db_root_password
     environment:
-       MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
-    image: 192.168.100.10:5000/apipython:latest
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
+      FLASK_APP: server_v2.py
+      FLASK_RUN_HOST: 0.0.0.0
+    # image: 192.168.100.10:5000/apipython:latest
+    build: .
     volumes:
       - .:/app
     ports:
@@ -47,10 +51,10 @@ services:
       - mysql
       - api
     environment:
-       MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
-       MYSQL_DATABASE: store
-       MYSQL_USER: api
-       MYSQL_PASSWORD_FILE: /run/secrets/db_password
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
+      MYSQL_DATABASE: store
+      MYSQL_USER: api
+      MYSQL_PASSWORD_FILE: /run/secrets/db_password
     secrets:
       - db_root_password
       - db_password
@@ -62,19 +66,19 @@ services:
     volumes:
       - data:/var/lib/mysql
     environment:
-       MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
-       MYSQL_DATABASE: store
-       MYSQL_USER: api
-       MYSQL_PASSWORD_FILE: /run/secrets/db_password
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
+      MYSQL_DATABASE: store
+      MYSQL_USER: api
+      MYSQL_PASSWORD_FILE: /run/secrets/db_password
     secrets:
       - db_root_password
       - db_password
 
 secrets:
-   db_password:
-     file: .secrets/db_password.txt
-   db_root_password:
-     file: .secrets/db_root_password.txt
+  db_password:
+    file: .secrets/db_password.txt
+  db_root_password:
+    file: .secrets/db_root_password.txt
 
 volumes:
   data: {}

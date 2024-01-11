@@ -10,3 +10,4 @@ pymysql
 cryptography
 flask-restful
 flask-mongoengine
+flask_cors

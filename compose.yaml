@@ -16,6 +16,7 @@ services:
       MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
       FLASK_APP: app.py
       FLASK_RUN_HOST: 0.0.0.0
+      MONGO_HOST: mongo
     # image: 192.168.100.10:5000/apipython:latest
     build: .
     volumes:

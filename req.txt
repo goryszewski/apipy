@@ -9,6 +9,8 @@ Werkzeug==2.3.7
 pymysql
 cryptography
 flask-restful
-flask-mongoengine
+mysqlclient
+mysql-connector-python
+sqlalchemy
 flask_cors
 flask-marshmallow

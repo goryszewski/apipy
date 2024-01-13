@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM python:3.8-slim-buster
+FROM python:3.8
 
 LABEL autor="Michal Goryszewski"
 LABEL version="1.0.1"
@@ -8,7 +8,7 @@ LABEL version="1.0.1"
 WORKDIR /app
 
 COPY ["req.txt" ,"./"]
-
+RUN apt update && apt install mariadb-client -y
 RUN pip3 install -r req.txt
 
 COPY . .

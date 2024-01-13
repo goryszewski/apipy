@@ -1,16 +1,13 @@
 from flask import Flask
 
-# from util import init_config
-from databases.db import initialize_db
+from databases.db import db_session
 from resources.routes import initialize_routes
 
 from flask_restful import Api
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS
 
 from flask_marshmallow import Marshmallow
 
-
-import os
 
 app = Flask(__name__)
 CORS(app)
@@ -19,12 +16,16 @@ api = Api(app)
 ma = Marshmallow(app)
 
 
-MONGO_HOST = os.environ["MONGO_HOST"]
+from databases.db import init_db
 
-
-app.config["MONGODB_SETTINGS"] = {"host": f"mongodb://{MONGO_HOST}/tasks"}
-initialize_db(app)
+init_db()
 initialize_routes(api)
+
+
+@app.teardown_appcontext
+def shutdown_session(exception=None):
+    db_session.remove()
+
 
 if __name__ == "__main__":
     app.run(debug=True)

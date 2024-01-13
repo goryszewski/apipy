@@ -1,41 +1,60 @@
 from flask import Response, request
-from databases.models import Task
 from flask_restful import Resource
-from databases.schema import TaskSchema
+
+from sqlalchemy.sql import func
+
+from databases.models import Task, TaskSchema
+from databases.db import db_session
 
 
 class TasksApi(Resource):
+    def __init__(self):
+        self.task_shema = TaskSchema(many=True)
+        self.task_shemaOne = TaskSchema()
+
     def get(self):
-        movies = Task.objects().to_json()
-        return Response(movies, mimetype="application/json", status=200)
+        tasks = Task.query.all()
+        result = self.task_shema.dump(tasks)
+        return result, 200
 
     def post(self):
         body = request.get_json()
-        error = TaskSchema().validate(body)
+        error = self.task_shemaOne.validate(body)
         if error:
             return error, 422
-        load = TaskSchema().load(body)
 
-        task = Task(**load).save()
-        id = task.id
+        task = Task(**self.task_shemaOne.load(body))
+        db_session.add(task)
+        db_session.commit()
 
-        return {"id": str(id)}, 200
+        return self.task_shemaOne.dump(task), 200
 
 
 class TaskAPI(Resource):
+    def __init__(self):
+        self.task_shemaOne = TaskSchema()
+
     def put(self, index):
         body = request.get_json()
         error = TaskSchema().validate(body)
         if error:
             return error, 422
-        load = TaskSchema().load(body)
-        Task.objects(id=index).update(**load)
-        return "", 200
+
+        task = Task.query.where(Task.id == index).update(
+            dict(**TaskSchema().load(body), updatedAt=func.now())
+        )
+
+        db_session.commit()
+
+        task = Task.query.filter(Task.id == index).first()
+        return self.task_shemaOne.dump(task)
 
     def delete(self, index):
-        Task.objects.get(id=index).delete()
+        task = Task.query.filter(Task.id == index).first()
+        db_session.delete(task)
+        db_session.commit()
         return "None", 200
 
     def get(self, index):
-        tasks = Task.objects.get(id=index).to_json()
-        return Response(tasks, mimetype="application/json", status=200)
+        task = Task.query.filter(Task.id == index).first()
+        return self.task_shemaOne.dump(task)

@@ -4,7 +4,7 @@ from flask_restful import Resource
 from sqlalchemy.sql import func
 
 from databases.models import Task, TaskSchema
-from databases.db import db_session
+from databases.db import db
 
 
 class TasksApi(Resource):
@@ -27,8 +27,8 @@ class TasksApi(Resource):
             return error, 422
 
         task = Task(**self.task_shemaOne.load(body))
-        db_session.add(task)
-        db_session.commit()
+        db["session"].add(task)
+        db["session"].commit()
 
         return self.task_shemaOne.dump(task), 200
 
@@ -47,16 +47,16 @@ class TaskAPI(Resource):
             dict(**TaskSchema().load(body), updatedAt=func.now())
         )
 
-        db_session.commit()
+        db["session"].commit()
 
         task = Task.query.filter(Task.id == index).first()
         return self.task_shemaOne.dump(task)
 
     def delete(self, index):
         task = Task.query.filter(Task.id == index).first()
-        db_session.delete(task)
-        db_session.commit()
-        return "None", 200
+        db["session"].delete(task)
+        db["session"].commit()
+        return {"id": index}, 200
 
     def get(self, index):
         task = Task.query.filter(Task.id == index).first()

@@ -17,6 +17,9 @@ class TasksApi(Resource):
         result = self.task_shema.dump(tasks)
         return result, 200
 
+    def options(self):
+        return {}, 200
+
     def post(self):
         body = request.get_json()
         error = self.task_shemaOne.validate(body)

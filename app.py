@@ -10,7 +10,7 @@ from flask_marshmallow import Marshmallow
 
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"*": {"origins": "*"}})
 api = Api(app)
 
 ma = Marshmallow(app)

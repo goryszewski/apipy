@@ -46,30 +46,13 @@ services:
     depends_on:
       - mysql
 
-  seeder:
-    image: "mysql:latest"
-    restart: no
-    command: /mnt/run.sh
-    volumes:
-      - ./seeder:/mnt
-    depends_on:
-      - mysql
-      - api
-    environment:
-      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
-      MYSQL_DATABASE: store
-      MYSQL_USER: api
-      MYSQL_PASSWORD_FILE: /run/secrets/db_password
-    secrets:
-      - db_root_password
-      - db_password
-
   mysql:
     image: "mysql:latest"
     ports:
       - 3306:3306
     volumes:
       - data:/var/lib/mysql
+      - ./seeder/init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
       MYSQL_DATABASE: store

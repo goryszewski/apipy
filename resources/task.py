@@ -37,27 +37,27 @@ class TaskAPI(Resource):
     def __init__(self):
         self.task_shemaOne = TaskSchema()
 
-    def put(self, index):
+    def put(self, id):
         body = request.get_json()
         error = TaskSchema().validate(body)
         if error:
             return error, 422
 
-        task = Task.query.where(Task.id == index).update(
+        task = Task.query.where(Task.id == id).update(
             dict(**TaskSchema().load(body), updatedAt=func.now())
         )
 
         db["session"].commit()
 
-        task = Task.query.filter(Task.id == index).first()
+        task = Task.query.filter(Task.id == id).first()
         return self.task_shemaOne.dump(task)
 
-    def delete(self, index):
-        task = Task.query.filter(Task.id == index).first()
+    def delete(self, id):
+        task = Task.query.filter(Task.id == id).first()
         db["session"].delete(task)
         db["session"].commit()
-        return {"id": index}, 200
+        return {"id": id}, 200
 
-    def get(self, index):
-        task = Task.query.filter(Task.id == index).first()
+    def get(self, id):
+        task = Task.query.filter(Task.id == id).first()
         return self.task_shemaOne.dump(task)
